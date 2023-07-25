@@ -1,0 +1,116 @@
+/* Estilos generales */
+
+body {
+    font-family: Arial, sans-serif;
+    /* Fuente del texto principal */
+    background-color: #f1f5f9;
+    /* Color de fondo del cuerpo */
+    margin: 0;
+    /* Elimina el margen predeterminado */
+    padding: 20px;
+    /* Espacio interno del cuerpo */
+    display: flex;
+    /* Activa el modelo de caja flexible */
+    justify-content: center;
+    /* Centra el contenido horizontalmente */
+    align-items: center;
+    /* Centra el contenido verticalmente */
+    min-height: 100vh;
+    /* Altura mínima del cuerpo para ocupar la pantalla completa */
+    box-sizing: border-box;
+    /* Incluye el relleno en el ancho y alto total */
+    flex-direction: column;
+    /* Alinea los elementos en una columna */
+}
+
+h1 {
+    color: #2c3e50;
+    /* Color del encabezado */
+}
+
+/* Estilos del formulario */
+
+form {
+    background-color: #fff;
+    /* Color de fondo del formulario */
+    padding: 20px;
+    /* Espacio interno del formulario */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    /* Sombra suave */
+    max-width: 600px;
+    /* Ancho máximo del formulario */
+    width: 100%;
+    /* Ocupa el ancho completo del contenedor */
+}
+
+label {
+    display: block;
+    /* Cada etiqueta en una línea separada */
+    margin-bottom: 5px;
+    /* Espacio inferior entre etiquetas */
+    color: #2980b9;
+    /* Color del texto de la etiqueta */
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"] {
+    width: 100%;
+    /* Ancho completo */
+    padding: 10px;
+    /* Espacio interno del campo de entrada */
+    border: 1px solid #ccc;
+    /* Borde del campo de entrada */
+    border-radius: 3px;
+    /* Bordes redondeados */
+    box-sizing: border-box;
+    /* Incluye el relleno en el ancho total */
+    margin-bottom: 10px;
+    /* Espacio inferior entre campos de entrada */
+}
+
+button[type="submit"] {
+    background-color: #2980b9;
+    /* Color de fondo del botón de envío */
+    color: #fff;
+    /* Color del texto del botón de envío */
+    padding: 10px 20px;
+    /* Espacio interno del botón de envío */
+    border: none;
+    /* Sin borde */
+    border-radius: 3px;
+    /* Bordes redondeados */
+    cursor: pointer;
+    /* Cambia el cursor al pasar por encima */
+}
+
+/* Estilos de la lista de usuarios */
+
+#list {
+    margin-top: 20px;
+    /* Espacio superior de la lista de usuarios */
+    max-width: 600px;
+    /* Ancho máximo de la lista de usuarios */
+    width: 100%;
+    /* Ocupa el ancho completo del contenedor */
+}
+
+.user_container {
+    background-color: #fff;
+    /* Color de fondo del contenedor del usuario */
+    padding: 10px;
+    /* Espacio interno del contenedor del usuario */
+    border-radius: 3px;
+    /* Bordes redondeados */
+    margin-bottom: 10px;
+    /* Espacio inferior entre contenedores de usuario */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    /* Sombra suave */
+}
+
+.user {
+    margin-bottom: 5px;
+    /* Espacio inferior entre elementos de usuario */
+}

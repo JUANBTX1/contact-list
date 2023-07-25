@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulario de Contacto</title>
+  <!-- Importamos los estilos -->
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <h1>Formulario de Contacto</h1>
+
+  <!-- Formulario -->
+  <form id="contactForm">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" required>
+
+    <label for="telefono">Teléfono:</label>
+    <input type="tel" id="telefono" required>
+
+    <label for="correo">Correo Electrónico:</label>
+    <input type="email" id="correo" required>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <!-- div para mostar la lista de usuarios -->
+  <div id="list"></div>
+
+  <!-- importamos las funciones js -->
+  <script src="main.js"></script>
+</body>
+</html>
