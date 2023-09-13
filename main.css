@@ -97,7 +97,11 @@ button[type="submit"] {
     /* Ocupa el ancho completo del contenedor */
 }
 
-.user_container {
+.data_container {
+    display: flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #fff;
     /* Color de fondo del contenedor del usuario */
     padding: 10px;
@@ -108,6 +112,14 @@ button[type="submit"] {
     /* Espacio inferior entre contenedores de usuario */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     /* Sombra suave */
+}
+
+.delete_btn {
+    color: #FFF;
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: darkred;
+    border-radius: 3px;
 }
 
 .user {

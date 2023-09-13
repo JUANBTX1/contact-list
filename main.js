@@ -1,22 +1,25 @@
-// Array para almacenar los usuarios
+// Array to store user data
 let users = [];
 
-// Referencia al formulario de contacto
+// Reference to the contact form
 const userForm = document.querySelector("#contactForm");
 
-// Evento de escucha para enviar el formulario
+// Event listener for form submission
 userForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // Obtener los valores del formulario
-  const user_name = document.querySelector("#nombre").value;
-  const phone = document.querySelector("#telefono").value;
-  const email = document.querySelector("#correo").value;
+  // Get form input values
+  const user_name = getValue("#nombre");
+  const user_lastName = getValue("#apellido");
+  const phone = getValue("#telefono");
+  const city = getValue("#ciudad");
+  const address = getValue("#direccion");
+  const email = getValue("#correo");
 
   if (userExist(phone, email)) {
     alertMsg("¡El usuario ya existe!");
   } else {
-    if (insertUser(user_name, phone, email)) {
+    if (insertUser(user_name, user_lastName, phone, city, address, email)) {
       updateUserList();
     } else {
       alertMsg("Error guardando, intenta nuevamente");
@@ -24,48 +27,90 @@ userForm.addEventListener("submit", (e) => {
   }
 });
 
-// Comprueba si el usuario ya existe en base al número de teléfono o correo electrónico
+// Helper function to get form input values
+const getValue = (elementId) => {
+  return document.querySelector(elementId).value;
+};
+
+// Check if a user already exists based on phone or email
 const userExist = (phone, email) => {
   return users.some((user) => user.phone === phone || user.email === email);
 };
 
-// Muestra una alerta con el mensaje proporcionado
+// Display an alert message
 const alertMsg = (msg) => {
   alert(msg);
 };
 
-// Inserta un nuevo usuario en el array
-const insertUser = (user_name, phone, email) => {
-  users.push({ user_name: user_name, phone: phone, email: email });
+// Insert a new user into the array
+const insertUser = (user_name, user_lastName, phone, city, address, email) => {
+  users.push({
+    user_name,
+    user_lastName,
+    phone,
+    city,
+    address,
+    email,
+  });
   return true;
 };
 
-// Actualiza la lista de usuarios en el DOM
+// Update the user list in the DOM
 const updateUserList = () => {
   userForm.reset();
   const usersContainer = document.querySelector("#list");
   usersContainer.innerHTML = "";
 
-  users.forEach((user) => {
-    const userContainer = document.createElement("div");
-    userContainer.classList.add("user_container", "user");
+  users.forEach((user, index) => {
+    // Add an index parameter
+    const { user_name, user_lastName, phone, city, address, email } = user;
 
-    const userName = document.createElement("div");
-    userName.classList.add("user");
-    userName.textContent = user.user_name;
+    // Create user data container
+    const dataContainer = document.createElement("div");
+    dataContainer.classList.add("data_container");
 
-    const userPhone = document.createElement("div");
-    userPhone.classList.add("user");
-    userPhone.textContent = user.phone;
+    // Create user element
+    const userContainer = createUserElement(
+      "user",
+      `${user_name} ${user_lastName}`
+    );
+    const userPhone = createUserElement("user", phone);
+    const userCity = createUserElement("user", city);
+    const userAddress = createUserElement("user", address);
+    const userEmail = createUserElement("user", email);
 
-    const userEmail = document.createElement("div");
-    userEmail.classList.add("user");
-    userEmail.textContent = user.email;
+    // Create delete button
+    const deleteUser = document.createElement("div");
+    deleteUser.classList.add("delete_btn");
+    deleteUser.textContent = "Delete";
 
-    userContainer.appendChild(userName);
+    // Add an onclick function to the delete button
+    deleteUser.onclick = () => {
+      deleteUserFromArray(index); // Call function to delete user from the array
+      updateUserList(); // Update the user list in the DOM
+    };
+
+    // Append elements to data container
     userContainer.appendChild(userPhone);
+    userContainer.appendChild(userCity);
+    userContainer.appendChild(userAddress);
     userContainer.appendChild(userEmail);
 
-    usersContainer.appendChild(userContainer);
+    dataContainer.appendChild(userContainer);
+    dataContainer.appendChild(deleteUser);
+    usersContainer.appendChild(dataContainer);
   });
+};
+
+// Function to delete a user from the array by index
+const deleteUserFromArray = (index) => {
+  users.splice(index, 1);
+};
+
+// Helper function to create a user element
+const createUserElement = (className, text) => {
+  const element = document.createElement("div");
+  element.classList.add(className);
+  element.textContent = text;
+  return element;
 };
